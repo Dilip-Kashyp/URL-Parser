@@ -23,17 +23,18 @@ const SplitString = (string, delimiter) => {
     return result;
 
 }
-let url = "https://www.google.com:8080/get_request?param1=a&param2=b#123"
+let url = "https://www.google.com:/get_request?param1=a&param2=b#123"
 const URLparser = (url) => {
     let protocol = SplitString(url,'/')
-    let Subdomain = SplitString(protocol[1],'.')
-    let Domain = Subdomain[1]; // Subdomain has a array with elements [ 'www', 'google', 'com:8080' ] and  assign 2nd element of array 
-    let TLD = SplitString(protocol[1],'.')
+    let spliter = [] = protocol ;
+    let Subdomain = SplitString(spliter[1],'.')
+    let Domain = SplitString(spliter[1],"."); 
+    let TLD = SplitString(spliter[1],'.')
     TLD = SplitString(TLD[2],":")
-    let Port = TLD[1] // TLD has a array with elements [ 'com', '8080' ] and  assign 2nd element of array 
+    let Port = SplitString(spliter[1],":")  
     let Path = SplitString(url,"/")
     Path = SplitString(Path[2],"?")
-
-    console.log(` Protocol : ${protocol[0]} \n Subdomain : ${Subdomain[0]} \n Domain : ${Domain} \n TLD : ${TLD[0]} \n Port : ${Port} \n Path : ${Path[0]} `)
+    console.log(spliter)
+    console.log(` Protocol : ${protocol[0]} \n Subdomain : ${Subdomain[0]} \n Domain : ${Domain[1]} \n TLD : ${TLD[0]} \n Port : ${Port[1]} \n Path : ${Path[0]} `)
 }
 URLparser(url);
